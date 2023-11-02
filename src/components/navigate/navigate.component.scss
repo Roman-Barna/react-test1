@@ -1,0 +1,29 @@
+.header {
+    background-color: #48dc77;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .menu {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 15px;
+        &-list {
+            list-style-type: none;
+            margin: 0 20px;
+
+            .active {
+                text-decoration: none;
+                color: rgb(104, 147, 234);
+                font-weight: 600;
+            }
+            
+            .inactive {
+                text-decoration: none;
+                color: rgb(255, 255, 255);
+            }
+        }
+    }
+}
+

@@ -1,25 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
+
+import { useEffect, useState } from 'react';
 import './App.css';
+import { getAllRoute } from './api/routeApi';
+import { NavigateMenu } from './components/navigate/navigate.component';
+import { AllRoute } from './routes/route';
+
+export interface DataApiRoute {
+  id: string
+  title: string
+  order: number
+  path: string
+}
 
 function App() {
+  const [allRoute, setAllRoute]: DataApiRoute[] | any[] = useState<DataApiRoute[]>([])
+
+  useEffect(() => {
+    getAllRoute()
+      .then((data:DataApiRoute[]) => {
+        setAllRoute(data)
+      })
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <NavigateMenu allRoute={allRoute} />
+      <AllRoute allRoute={allRoute} />
+    </>
   );
 }
 
