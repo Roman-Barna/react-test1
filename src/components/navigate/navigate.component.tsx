@@ -11,10 +11,10 @@ export const NavigateMenu = (props: NavigateMenuProps) => {
     return (
         <>
             <header className="header">
-                <nav className="menu">
+                <nav className="menu" >
                     {
                         allRoute && allRoute.map((element: DataApiRoute, ind: number) =>
-                            <li className="menu-list">
+                            <li className="menu-list" key={ind}>
                                 <NavLink className={({ isActive }) => (isActive ? 'active' : 'inactive')} 
                                 key={ind} 
                                 to={'/' + element.id}
